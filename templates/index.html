@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security Ops Mini-Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <h1>Security Ops Mini-Dashboard</h1>
+    </div>
+    <p class="tagline">Synthetic alert data · severity heatmap · AI trend explanations</p>
+  </header>
+
+  <main class="grid">
+    <section class="card stats" id="stats" aria-label="Summary counts"></section>
+
+    <section class="card">
+      <div class="card__head">
+        <h2>Alerts over time</h2>
+        <div class="controls">
+          <label for="series">Series</label>
+          <select id="series"></select>
+          <button id="explainBtn" type="button">Explain this trend</button>
+        </div>
+      </div>
+      <canvas id="trendChart" height="120"></canvas>
+      <div id="explanation" class="explanation" hidden></div>
+    </section>
+
+    <section class="card">
+      <h2>Top categories</h2>
+      <canvas id="categoryChart" height="160"></canvas>
+    </section>
+
+    <section class="card">
+      <h2>Activity heatmap <small>(weekday × hour)</small></h2>
+      <div id="heatmap" class="heatmap"></div>
+      <div class="legend">
+        <span>Low</span><span class="scale"></span><span>High</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    All data is synthetic. Built by Alhousseiny "Al" Diallo.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

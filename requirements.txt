@@ -1,0 +1,6 @@
+# Required: web framework for the dashboard backend.
+Flask>=3.0
+
+# Optional: richer AI trend explanations via the Claude API.
+# Enable with:  pip install -e ".[ai]"
+#   anthropic>=0.39

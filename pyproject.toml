@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "security-ops-dashboard"
+version = "1.0.0"
+description = "A Flask dashboard that visualizes synthetic security-alert data with severity heatmaps, trend charts, and AI-powered trend explanations."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Alhousseiny Diallo" }]
+keywords = ["security", "soc", "dashboard", "flask", "visualization", "blue-team"]
+dependencies = ["Flask>=3.0"]
+
+[project.optional-dependencies]
+ai = ["anthropic>=0.39"]
+
+[tool.setuptools]
+packages = ["secops_dashboard"]
