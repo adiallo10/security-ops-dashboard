@@ -88,6 +88,26 @@ scripts/
 tests/
 ```
 
+## How I used Claude
+
+The dashboard math is plain Python — Claude is the **"so what" layer**. When you
+click *Explain this trend*, the backend sends the selected series (labels +
+values + severity mix) to Claude and asks for a short, manager-friendly readout
+with a suggested next step.
+
+Design decisions:
+
+- **Key stays server-side.** The browser only calls the Flask `/api/explain`
+  endpoint; Flask calls Claude. The API key is never shipped to the client.
+- **Deterministic fallback.** With no `ANTHROPIC_API_KEY`, a local explainer
+  detects spikes/steady/rising trends — so the demo always works offline.
+- **Grounded prompt.** The prompt (see
+  [`explain.py`](secops_dashboard/explain.py)) contains only the real data
+  points and forbids invented details.
+- **Where Claude helped me build it:** shaping the synthetic-data generator so
+  the injected phishing spike looks realistic, and refining the Chart.js option
+  defaults for the dark theme.
+
 ## Notes on safety
 
 - All data is **synthetic/mock** — no real alerts or PII.
